@@ -8,6 +8,7 @@
 
 using namespace std;
 
+// Function to generate 'n' random integers
 vector<int> generateRandomNumbers(int n) {
     vector<int> nums(n);
     static bool seeded = false;
@@ -20,6 +21,7 @@ vector<int> generateRandomNumbers(int n) {
     return nums;
 }
 
+// Function to print contents of a vector
 void printVector(const vector<int>& arr) {
     if (arr.empty()) {
         cout << "[Empty]\n";
@@ -30,6 +32,7 @@ void printVector(const vector<int>& arr) {
     cout << endl;
 }
 
+// Function to get validated integer input from user
 int getValidatedIntegerInput() {
     int num;
     while (!(cin >> num)) {
@@ -41,6 +44,7 @@ int getValidatedIntegerInput() {
     return num;
 }
 
+// Binary search function
 int binarySearch(const vector<int>& arr, int target) {
     int low = 0, high = arr.size() - 1;
     while (low <= high) {
@@ -51,6 +55,7 @@ int binarySearch(const vector<int>& arr, int target) {
     return -1;
 }
 
+// Binary search helper used by exponential search
 int binarySearchForExp(const vector<int>& arr, int low, int high, int target) {
     while (low <= high) {
         int mid = low + (high - low) / 2;
@@ -60,6 +65,7 @@ int binarySearchForExp(const vector<int>& arr, int low, int high, int target) {
     return -1;
 }
 
+// Exponential search function
 int exponentialSearch(const vector<int>& arr, int target) {
     int n = arr.size();
     if (n == 0) return -1;
@@ -69,6 +75,7 @@ int exponentialSearch(const vector<int>& arr, int target) {
     return binarySearchForExp(arr, i / 2, min(i, n - 1), target);
 }
 
+// Partition function for quick sort
 int partition(vector<int>& arr, int low, int high) {
     int pivot = arr[high], i = low - 1;
     for (int j = low; j < high; j++) {
@@ -81,6 +88,7 @@ int partition(vector<int>& arr, int low, int high) {
     return i + 1;
 }
 
+// Quick sort function
 void quickSort(vector<int>& arr, int low, int high) {
     if (low < high) {
         int pi = partition(arr, low, high);
@@ -89,6 +97,7 @@ void quickSort(vector<int>& arr, int low, int high) {
     }
 }
 
+// Merge function for merge sort
 void merge(vector<int>& arr, int l, int m, int r) {
     int n1 = m - l + 1, n2 = r - m;
     vector<int> L(n1), R(n2);
@@ -102,6 +111,7 @@ void merge(vector<int>& arr, int l, int m, int r) {
     while (j < n2) arr[k++] = R[j++];
 }
 
+// Merge sort function
 void mergeSort(vector<int>& arr, int l, int r) {
     if (l < r) {
         int m = l + (r - l) / 2;
